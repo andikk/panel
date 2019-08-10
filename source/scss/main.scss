@@ -1,0 +1,124 @@
+//присвоили значения переменным бутсрапа
+$dark: #fff;
+$panel-color: #7e00ff;
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px
+) !default;
+
+ 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 1024px,
+  xl: 1200px
+) !default;
+
+//скомпилировали бутстрап с новыми значениями
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/_forms.scss";
+//@import "../../node_modules/bootstrap/scss/input-group";
+
+//@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$hamburger-layer-color: #fff;
+
+@import "../../node_modules/hamburgers/_sass/hamburgers/hamburgers";
+
+.page {
+  min-height: 100vh;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.header {
+  background-color: $panel-color;
+  color: #fff;
+  height: 10%''
+}
+
+.footer {
+  background-color: $panel-color;
+  color: #fff;
+  height: 10%;	
+}
+
+
+.logo {
+  line-height: 1;
+}
+.content {
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.content-block {
+  overflow-y: scroll;
+  max-height: 80vh; 
+}
+
+.menu {
+  background-color: #7000e0;
+  color: #fff;
+  z-index: 2;
+  min-width: 300px;
+  transition: all 0.7s ease-in-out;
+  position: relative;
+  min-height: 80vh;
+  height: 100px;
+  overflow-y: scroll;
+
+  &_opened {
+  	left: 0;
+  }
+
+  &_closed {
+  	left: -1000px;
+  	min-width: 0;
+  }
+
+  // &_closed * {
+  //  	display: none;
+  // }
+
+  @include media-breakpoint-down(md) {
+  	position: absolute;
+  	max-height: 100%;
+  }
+
+  & a {
+  	color: #fff;
+  }
+}
+
+.btn-footer {
+  & path {
+    transition: fill 0.15s ease-in-out;
+  }
+
+  &:hover path {
+    fill: #000;
+  }
+}
+
