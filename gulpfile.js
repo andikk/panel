@@ -55,8 +55,6 @@ gulp.task("style", function (done) {
     done();
 });
 
-
-
 gulp.task("copy", function (done) {
   return gulp.src([
     "source/js/**",
@@ -75,4 +73,8 @@ gulp.task('build', gulp.series('clean', 'style', 'copy', function (done) {
   done();
 }));
 
-gulp.task("start", gulp.series("css", "server"));
+gulp.task("start", gulp.series('css', 'server'));
+
+gulp.task('default', function() {  
+  gulp.run('clean', 'style', 'copy', 'server');
+});

@@ -1,7 +1,11 @@
-//присвоили значения переменным бутсрапа
 $dark: #fff;
 $panel-color: #7e00ff;
-
+$panel-text-color: #fff;
+$menu-color: #7000e0;
+$menu-link-color: #fff;
+$even-item-color: #f6f6f6;
+$hover-item-color: #cec6c6;
+$column2-color: #e6e6e6;
 
 $grid-breakpoints: (
   xs: 0,
@@ -11,33 +15,24 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 
- 
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
+  sm: 576px,
+  md: 768px,
   lg: 1024px,
   xl: 1200px
 ) !default;
 
-//скомпилировали бутстрап с новыми значениями
+$enable-responsive-font-sizes: true;
+
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/reboot";
 @import "../../node_modules/bootstrap/scss/utilities";
-@import "../../node_modules/bootstrap/scss/transitions";
 @import "../../node_modules/bootstrap/scss/grid";
-@import "../../node_modules/bootstrap/scss/nav";
-@import "../../node_modules/bootstrap/scss/navbar";
 @import "../../node_modules/bootstrap/scss/type";
-@import "../../node_modules/bootstrap/scss/tables";
 @import "../../node_modules/bootstrap/scss/buttons";
-@import "../../node_modules/bootstrap/scss/modal";
-@import "../../node_modules/bootstrap/scss/close";
-@import "../../node_modules/bootstrap/scss/_forms.scss";
-//@import "../../node_modules/bootstrap/scss/input-group";
-
-//@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/forms.scss";
 
 $hamburger-layer-color: #fff;
 
@@ -46,51 +41,104 @@ $hamburger-layer-color: #fff;
 .page {
   min-height: 100vh;
   height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
 }
 
 .header {
   background-color: $panel-color;
-  color: #fff;
-  height: 10%''
+  color: $panel-text-color;
+  height: 10vh;
 }
 
 .footer {
   background-color: $panel-color;
-  color: #fff;
-  height: 10%;	
+  color: $panel-text-color;
+  height: 10vh;	
 }
 
-
-.logo {
-  line-height: 1;
+.main {
+  height: 80vh;	
 }
-.content {
-  flex-wrap: nowrap;
+
+.column {
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.column1 {
+  width: 20%;
+  transition: all 0.7s ease-in-out;
+  @include media-breakpoint-down(md) {
+  	width: 40%;
+  }
+
+  & ul {
+  	padding-top: 50px;
+  }
+  
+   & li:nth-child(even) {
+     background-color: $even-item-color;
+   }
+
+    & li:nth-child(2) { 
+      position: fixed;
+      margin-top: -50px;
+      background-color: #fff;
+      width: 190px;
+      color: red;
+      @include media-breakpoint-down(lg) {       
+        width: 156px;
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 293px;
+      }
+  }
+
+  & li:hover {
+    background-color: $hover-item-color;	
+  }
+
+  & li:focus {
+    background-color: $hover-item-color;
+    outline-color: $panel-color;	
+  }
+}
+
+.column2 {
+  width: 60%;
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+  background-color: $column2-color;
   position: relative;
+  z-index: 10;
 }
 
-.content-block {
-  overflow-y: scroll;
-  max-height: 80vh; 
+.column3 {
+  width: 20%;
+  
+  & li:nth-child(even) {
+    background-color: $even-item-color;
+  }
 }
 
 .menu {
-  background-color: #7000e0;
-  color: #fff;
-  z-index: 2;
-  min-width: 300px;
-  transition: all 0.7s ease-in-out;
+  background-color: $menu-color;
+  color: $panel-text-color;
+  z-index: 20;
+  width: 250px;
+  transition: left 0.7s ease-in-out;
   position: relative;
   min-height: 80vh;
   height: 100px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   &_opened {
   	left: 0;
+  }
+
+  &_opened + .js-column1 {
+  	margin-left: 0;
   }
 
   &_closed {
@@ -98,17 +146,19 @@ $hamburger-layer-color: #fff;
   	min-width: 0;
   }
 
-  // &_closed * {
-  //  	display: none;
-  // }
+  &_closed + .js-column1 { 
+    margin-left: -250px;
+    @include media-breakpoint-down(md) { 
+      margin-left: 0;
+    } 
+  }
 
   @include media-breakpoint-down(md) {
-  	position: absolute;
-  	max-height: 100%;
+    position: absolute;
   }
 
   & a {
-  	color: #fff;
+  	color: $menu-link-color
   }
 }
 
@@ -121,4 +171,3 @@ $hamburger-layer-color: #fff;
     fill: #000;
   }
 }
-
