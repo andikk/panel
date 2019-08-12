@@ -32,7 +32,7 @@ var load = function (url, onSuccess, onError, method, data) {
     onError('Request timeout ' + xhr.timeout + 'мс');
   });
 
-  xhr.timeout = TIMEOUT; // 10s
+  xhr.timeout = TIMEOUT; 
 
   xhr.open(method, url);
   xhr.send(data);
@@ -90,7 +90,7 @@ var downloadItems = function () {
     showItems(allItems);
   };
  
-  load('/json/content.json', onSuccess, onError, 'GET', null);
+  load('json/content.json', onSuccess, onError, 'GET', null);
 };
 
 var fixSize = function() {
